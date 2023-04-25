@@ -11,7 +11,7 @@ let cypressConfigBaseUrl;
 try {
   const cypressConfig = JSON.parse(fs.readFileSync("cypress.json"));
   cypressConfigBaseUrl = cypressConfig.baseUrl;
-} catch (e) {}
+} catch (e) { }
 
 const baseUrl = process.env.CYPRESS_baseUrl || cypressConfigBaseUrl || "http://localhost:5001";
 
@@ -63,10 +63,10 @@ function runCypressCI() {
     PERCY_TOKEN_ENCODED,
     CYPRESS_PROJECT_ID_ENCODED,
     CYPRESS_RECORD_KEY_ENCODED,
-    CIRCLE_REPOSITORY_URL,
+    GITHUB_REPOSITORY,
   } = process.env;
 
-  if (CIRCLE_REPOSITORY_URL && CIRCLE_REPOSITORY_URL.includes("getredash/redash")) {
+  if (GITHUB_REPOSITORY === "getredash/redash") {
     if (PERCY_TOKEN_ENCODED) {
       process.env.PERCY_TOKEN = atob(`${PERCY_TOKEN_ENCODED}`);
     }
