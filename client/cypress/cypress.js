@@ -63,19 +63,16 @@ function runCypressCI() {
     PERCY_TOKEN_ENCODED,
     CYPRESS_PROJECT_ID_ENCODED,
     CYPRESS_RECORD_KEY_ENCODED,
-    GITHUB_REPOSITORY,
   } = process.env;
 
-  if (GITHUB_REPOSITORY === "getredash/redash") {
-    if (PERCY_TOKEN_ENCODED) {
-      process.env.PERCY_TOKEN = atob(`${PERCY_TOKEN_ENCODED}`);
-    }
-    if (CYPRESS_PROJECT_ID_ENCODED) {
-      process.env.CYPRESS_PROJECT_ID = atob(`${CYPRESS_PROJECT_ID_ENCODED}`);
-    }
-    if (CYPRESS_RECORD_KEY_ENCODED) {
-      process.env.CYPRESS_RECORD_KEY = atob(`${CYPRESS_RECORD_KEY_ENCODED}`);
-    }
+  if (PERCY_TOKEN_ENCODED) {
+    process.env.PERCY_TOKEN = atob(`${PERCY_TOKEN_ENCODED}`);
+  }
+  if (CYPRESS_PROJECT_ID_ENCODED) {
+    process.env.CYPRESS_PROJECT_ID = atob(`${CYPRESS_PROJECT_ID_ENCODED}`);
+  }
+  if (CYPRESS_RECORD_KEY_ENCODED) {
+    process.env.CYPRESS_RECORD_KEY = atob(`${CYPRESS_RECORD_KEY_ENCODED}`);
   }
 
   execSync(
